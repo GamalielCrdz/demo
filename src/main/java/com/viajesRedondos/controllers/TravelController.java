@@ -35,6 +35,11 @@ public class TravelController {
         return "borrado";
     }
 
+    @GetMapping(path = "/travel/{id}")
+    public Travel show(@PathVariable Long id) {
+        return this.travelRepository.findOne(id);
+    }
+
     @PostMapping(path = "/travel/search")
     public Iterable<Travel> search(@RequestBody Travel travel) {
         
