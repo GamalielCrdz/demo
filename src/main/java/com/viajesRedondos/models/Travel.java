@@ -1,35 +1,39 @@
 package com.viajesRedondos.models;
 
 import java.util.Date;
-
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Travel {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    private Date  departureDate;
+	private Date departureDate;
 
-    private Date returnDate;
+	private Date returnDate;
 
-    private String departureCity;
+	private String departureCity;
 
-    private String arrivalCity;
+	private String arrivalCity;
 
-    private float price;
+	private float price;
 
-    private Integer numberOfPeople;
+	private Integer numberOfPeople;
 
 	@OneToOne
 	@JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+	private Hotel hotel;
+
+	@OneToMany(mappedBy = "travel")
+	private List<Purchase> purchasesList;
 
 	/**
 	 * @return the departureDate
@@ -118,22 +122,22 @@ public class Travel {
 	/**
 	 * @return the hotel
 	 */
- 	public Hotel getHotel() {
+	public Hotel getHotel() {
 		return hotel;
-	} 
+	}
 
 	/**
 	 * @param hotel the hotel to set
 	 */
- 	public void setHotel(Hotel hotel) {
+	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
-	} 
+	}
 
 	/**
 	 * @return the id
 	 */
- 	public Long getId() {
+	public Long getId() {
 		return id;
-	} 
+	}
 
 }

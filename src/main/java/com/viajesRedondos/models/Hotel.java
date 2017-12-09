@@ -24,7 +24,7 @@ public class Hotel {
 	private List<String> opinions;
 	
 	@OneToMany(mappedBy = "hotel")
-	private List<Travel> travel; 
+	private List<Travel> travelsList; 
 
 	/**
 	 * @return the name
